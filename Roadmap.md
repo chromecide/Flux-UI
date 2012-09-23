@@ -16,3 +16,4 @@ A User interface Example for the Chatrooms Server FluxNode Mixin
 	- TitleBar
 	- TitleBar tools
 
+- Popcorn.js Mixin
