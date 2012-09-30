@@ -245,7 +245,7 @@
             'toolbar-button': function(params) {
                 return [
                     T, '<div style="background:',T,';width:', params.size.width, 'px;height:', params.size.height,
-                    'px;position:absolute;top:', (params.height - params.size.height)/2, 'px;left:-',params.size.width + 4,'px"></div>'
+                    'px;position:absolute;top:', (params.height - params.size.height)/2, 'px;left:-',params.size.width + 4,'px; white-space:nowrap;"></div>'
                 ];
             },
             'window-icon': function(params){
