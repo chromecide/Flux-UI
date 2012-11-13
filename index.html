@@ -1,18 +1,30 @@
-<!DOCTYPE HTML>
 <html>
 	<head>
-		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
-		<title>Contact Central</title>
-		<script data-main="./lib/FluxSingularity/lib/FluxNode.js" src="./lib/RequireJS.js"></script>
 		
+		<title>FluxUI Example</title>
+		<base href="./" target="_blank">
+		<script src="http://requirejs.org/docs/release/2.1.0/minified/require.js" data-main="./node_modules/FluxNode/"></script>
+		<script>
+			var myNode;
+			require(['FluxNode'], function(FluxNode){
+				new FluxNode({
+					debug: true,
+					mixins:[
+						{
+							name: 'FluxUI.js',
+							options: {
+								
+							}
+						}	
+					]
+				}, function(nd){
+					myNode = nd;
+					console.log(myNode);
+				});
+			});
+		</script>
 	</head>
-	<body style='overflow:hidden;margin:0;padding:0;background:#D9DDE0;background-repeat:repeat-x;min-height:400px'>
-    
-    	<script>
-			//require(['./lib/FluxLoader.js']);
-			//require(['./Examples/POP3/loader.js']);
-			//require(['./Examples/Chatrooms/ChatroomUILoader.js']);
-			require(['./Examples/ArduinoControl/UILoader.js']);
-		</script>	
+	<body>
+		
 	</body>
 </html>
