@@ -46,7 +46,6 @@ var FluxUI = {
 		console.log('Loading '+driverName+' FluxUI Driver');
 		require(['lib/drivers/'+thisNode.FluxUI_Settings.driver.name+'/driver.js'], function(driverObj){
 			if(driverObj){
-				console.log(driverObj);
 				if(driverObj.init){
 					driverObj.init(driverCfg, function(){
 						if(callback){
