@@ -16,8 +16,10 @@ var FluxUI = {
 			cfg = {};	
 		}
 		
-		require([thisNode.FluxUI_Settings.path+'workspace'], function(WorkSpace_ctr){
+		require([thisNode.FluxUI_Settings.path+'workspace', thisNode.FluxUI_Settings.path+'launchbar'], function(WorkSpace_ctr, Launchbar_ctr){
 			FluxUI.Workspace = WorkSpace_ctr;
+			FluxUI.Launchbar = Launchbar_ctr;
+			
 			if(cfg.driver){
 				if((typeof cfg.driver)=='object'){
 					thisNode.FluxUI_Settings.driver.name = cfg.driver.name;
@@ -65,7 +67,7 @@ var FluxUI = {
 		thisNode.FluxUI_Settings.driver.initCfg = driverCfg;
 		
 		console.log('Loading '+driverName+' FluxUI Driver');
-		require(['lib/drivers/'+thisNode.FluxUI_Settings.driver.name+'/driver.js'], function(driverObj){
+		require(['./lib/drivers/'+thisNode.FluxUI_Settings.driver.name+'/driver.js'], function(driverObj){
 			if(driverObj){
 				thisNode.FluxUI_Settings.driver.object = driverObj;
 				if(driverObj.init){

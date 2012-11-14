@@ -8,10 +8,15 @@
 				margin:0;
 				padding:0;	
 			}
+			
 			.FluxUI-Workspace{
 				background-color: red;
 				width: 100%;
-			}	
+			}
+			
+			.FluxUI-TopLaunchbar{
+				background-color: blue;	
+			}
 		</style>
 		
 		<script src="http://requirejs.org/docs/release/2.1.0/minified/require.js" data-main="./node_modules/FluxNode/"></script>
@@ -29,6 +34,7 @@
 									{
 										launchbars: {
 											top: {
+												height: 50,
 												launchers: [
 													'Just text'
 												]
