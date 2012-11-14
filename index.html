@@ -1,8 +1,19 @@
 <html>
 	<head>
-		
 		<title>FluxUI Example</title>
 		<base href="./" target="_blank">
+		
+		<style>
+			body{
+				margin:0;
+				padding:0;	
+			}
+			.FluxUI-Workspace{
+				background-color: red;
+				width: 100%;
+			}	
+		</style>
+		
 		<script src="http://requirejs.org/docs/release/2.1.0/minified/require.js" data-main="./node_modules/FluxNode/"></script>
 		<script>
 			var myNode;
@@ -13,7 +24,19 @@
 						{
 							name: 'FluxUI.js',
 							options: {
-								
+								// driver: 'basic_html', //assumed by default
+								workspaces:[
+									{
+										launchbars: {
+											top: {
+												launchers: [
+													'Just text'
+												]
+											},
+											left: true
+										}
+									}
+								]
 							}
 						}	
 					]
@@ -22,6 +45,7 @@
 					console.log('----');
 					console.log(myNode);
 					console.log('----');
+					myNode.FluxUI_changeWorkspace();
 				});
 			});
 		</script>
