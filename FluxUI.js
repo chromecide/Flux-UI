@@ -78,7 +78,6 @@ var FluxUI = {
 					});
 				}
 			}
-			
 		});
 	},
 	FluxUI_getBody: function(callback){
@@ -166,7 +165,7 @@ var FluxUI = {
 		}
 		
 		new FluxUI.Workspace(cfg, function(ws){
-			console.log(ws);
+			
 			FluxUI.FluxUI_Settings.workspaces[ws.name] = ws;
 			if(callback){
 				callback(ws);

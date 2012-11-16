@@ -4,18 +4,28 @@
 		<base href="./" target="_blank">
 		
 		<style>
-			body{
+			body, ul, li{
 				margin:0;
-				padding:0;	
+				padding:0;
 			}
 			
 			.FluxUI-Workspace{
-				background-color: red;
+				background-color: cyan;
 				width: 100%;
 			}
 			
-			.FluxUI-TopLaunchbar{
+			.FluxUI-topLaunchbar{
+				background-color: green;	
+			}
+			
+			.FluxUI-bottomLaunchbar{
 				background-color: blue;	
+			}
+			.FluxUI-leftLaunchbar{
+				background-color: yellow;	
+			}
+			.FluxUI-rightLaunchbar{
+				background-color: red;
 			}
 		</style>
 		
@@ -39,7 +49,9 @@
 													'Just text'
 												]
 											},
-											left: true
+											left: true,
+											right: true,
+											bottom: true
 										}
 									}
 								]
