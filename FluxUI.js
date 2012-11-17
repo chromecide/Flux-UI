@@ -16,10 +16,10 @@ var FluxUI = {
 			cfg = {};	
 		}
 		
-		require([thisNode.FluxUI_Settings.path+'workspace', thisNode.FluxUI_Settings.path+'launchbar'], function(WorkSpace_ctr, Launchbar_ctr){
+		require([thisNode.FluxUI_Settings.path+'workspace', thisNode.FluxUI_Settings.path+'launchbar', thisNode.FluxUI_Settings.path+'launcher'], function(WorkSpace_ctr, Launchbar_ctr, Launcher_ctr){
 			FluxUI.Workspace = WorkSpace_ctr;
 			FluxUI.Launchbar = Launchbar_ctr;
-			
+			FluxUI.Launcher = Launcher_ctr;
 			if(cfg.driver){
 				if((typeof cfg.driver)=='object'){
 					thisNode.FluxUI_Settings.driver.name = cfg.driver.name;
