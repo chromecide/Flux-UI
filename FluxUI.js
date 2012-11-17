@@ -20,15 +20,17 @@ var FluxUI = {
 				thisNode.FluxUI_Settings.path+'workspace', 
 				thisNode.FluxUI_Settings.path+'launchbar', 
 				thisNode.FluxUI_Settings.path+'launcher',
-				thisNode.FluxUI_Settings.path+'dashlet' ,
-				thisNode.FluxUI_Settings.path+'dialog'
+				thisNode.FluxUI_Settings.path+'dashlet',
+				thisNode.FluxUI_Settings.path+'dialog',
+				thisNode.FluxUI_Settings.path+'dashboard'
 				], 
-		function(WorkSpace_ctr, Launchbar_ctr, Launcher_ctr, Dashlet_ctr, Dialog_ctr){
+		function(WorkSpace_ctr, Launchbar_ctr, Launcher_ctr, Dashlet_ctr, Dialog_ctr, Dashboard_ctr){
 			FluxUI.Workspace = WorkSpace_ctr;
 			FluxUI.Launchbar = Launchbar_ctr;
 			FluxUI.Launcher = Launcher_ctr;
 			FluxUI.Dashlet = Dashlet_ctr;
 			FluxUI.Dialog = Dialog_ctr;
+			FluxUI.Dashboard = Dashboard_ctr;
 			
 			if(cfg.driver){
 				if((typeof cfg.driver)=='object'){
@@ -110,6 +112,7 @@ var FluxUI = {
 	FluxUI_getBody: function(callback){
 		var driver = FluxUI.FluxUI_Settings.driver.object? FluxUI.FluxUI_Settings.driver.object:{};
 		var bodyItem = false;
+		
 		if(driver && driver.getBody){
 			if(callback){
 				bodyItem = driver.getBody(function(bd){

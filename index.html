@@ -27,7 +27,7 @@
 			
 			.FluxUI-topLaunchbar li{
 				float:left;	
-				padding: 2 2 2 2;
+				padding: 2px 2px 2px 2px;
 				border-right: 1px solid #fff;
 			}
 			
@@ -68,6 +68,10 @@
 				color: #fff;
 			}
 
+			.FluxUI_Dashboard{
+				background-color:red;
+				border:1px solid red;
+			}
 		</style>
 		
 		<script src="http://requirejs.org/docs/release/2.1.0/minified/require.js" data-main="./node_modules/FluxNode/"></script>
@@ -138,10 +142,24 @@
 													}
 												]
 											},
-											left: false,
-											right: false,
+											left: true,
+											right: true,
 											bottom: true
-										}
+										},
+										dashboards:[
+											{
+												name: 'default_dashboard',
+												/*dashlets: [
+													{
+														type:'html',
+														name: 'Blah',
+														options: {
+															html: '<b>Test</b>'
+														}
+													}
+												]*/
+											}
+										]
 									}
 								]
 							}
