@@ -69,8 +69,14 @@
 			}
 
 			.FluxUI_Dashboard{
-				background-color:red;
-				border:1px solid red;
+				color: #000;	
+			}
+			
+			h1{
+				padding: 0 0 0 0;
+				margin: 0 0 0 0;
+				margin-top: 0.25em;
+				margin-left: 0.25em;
 			}
 		</style>
 		
@@ -148,16 +154,28 @@
 										},
 										dashboards:[
 											{
-												name: 'default_dashboard',
-												/*dashlets: [
+												name: 'fluxs_dashboard',
+												dashlets: [
 													{
 														type:'html',
-														name: 'Blah',
+														name: 'FluxS-Info',
 														options: {
-															html: '<b>Test</b>'
+															html: '<h1>Flux Singularity</h1>'
 														}
 													}
-												]*/
+												]
+											},
+											{
+												name: 'fluxnode_dashboard',
+												dashlets: [
+													{
+														type:'html',
+														name: 'FluxNode-Info',
+														options: {
+															html: '<h1>Flux Node</h1>'
+														}
+													}
+												]
 											}
 										]
 									}
@@ -170,6 +188,27 @@
 					console.log('----');
 					console.log(myNode);
 					console.log('----');
+					
+					myNode.on('HomeButton.Click', function(){
+						FluxUI.FluxUI_getWorkspace(function(ws){
+							console.log(ws);
+							ws.showDashboard('fluxs_dashboard', function(){
+								console.log('JGHHGHGGH');
+							});
+						});
+					});
+					
+					myNode.on('FluxNodeButton.Click', function(){
+						FluxUI.FluxUI_getWorkspace(function(ws){
+							console.log(ws);
+							ws.showDashboard('fluxnode_dashboard', function(){
+								console.log('JGHHGHGGH');
+							});
+						});
+					});
+					
+					
+					
 					myNode.on('StartTourButton.Click', function(){
 						new FluxUI.Dialog({
 							size: {
