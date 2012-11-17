@@ -16,10 +16,20 @@ var FluxUI = {
 			cfg = {};	
 		}
 		
-		require([thisNode.FluxUI_Settings.path+'workspace', thisNode.FluxUI_Settings.path+'launchbar', thisNode.FluxUI_Settings.path+'launcher'], function(WorkSpace_ctr, Launchbar_ctr, Launcher_ctr){
+		require([
+				thisNode.FluxUI_Settings.path+'workspace', 
+				thisNode.FluxUI_Settings.path+'launchbar', 
+				thisNode.FluxUI_Settings.path+'launcher',
+				thisNode.FluxUI_Settings.path+'dashlet' ,
+				thisNode.FluxUI_Settings.path+'dialog'
+				], 
+		function(WorkSpace_ctr, Launchbar_ctr, Launcher_ctr, Dashlet_ctr, Dialog_ctr){
 			FluxUI.Workspace = WorkSpace_ctr;
 			FluxUI.Launchbar = Launchbar_ctr;
 			FluxUI.Launcher = Launcher_ctr;
+			FluxUI.Dashlet = Dashlet_ctr;
+			FluxUI.Dialog = Dialog_ctr;
+			
 			if(cfg.driver){
 				if((typeof cfg.driver)=='object'){
 					thisNode.FluxUI_Settings.driver.name = cfg.driver.name;
@@ -80,6 +90,23 @@ var FluxUI = {
 			}
 		});
 	},
+	
+	FluxUI_getSize: function(callback){
+		var e = window;
+	    var a = 'inner';
+	    if (!('innerWidth' in window)){
+	        a = 'client';
+	        e = document.documentElement || document.body;
+	    }
+		
+	    var thisSize =  { width : e[ a+'Width' ] , height : e[ a+'Height' ] }
+	    
+	    if(callback){
+	    	callback(thisSize);
+	    }
+	    
+	    return thisSize;
+	},
 	FluxUI_getBody: function(callback){
 		var driver = FluxUI.FluxUI_Settings.driver.object? FluxUI.FluxUI_Settings.driver.object:{};
 		var bodyItem = false;
@@ -102,6 +129,17 @@ var FluxUI = {
 		
 		if(driver && driver.appendChild){
 			driver.appendChild.apply(this, arguments);
+		}
+	},
+	FluxUI_loadDashlet: function(type, callback){
+		var driver = FluxUI.FluxUI_Settings.driver.object? FluxUI.FluxUI_Settings.driver.object:{};
+		
+		if(driver && driver.loadDashlet){
+			driver.loadDashlet.call(this, type, function(dsh_ctr){
+				callback(dsh_ctr);
+			});
+		}else{
+			console.log('No Driver Loaded: loadDashlet');
 		}
 	},
 	FluxUI_getWorkspaceCount: function(callback){

@@ -34,7 +34,7 @@
 			.FluxUI-topLaunchbar li a{
 				display: block;
 				cursor: pointer;
-				padding: 2 2 2 2;
+				margin: 2px 2px 2px 2px;
 					
 			}
 			
@@ -47,6 +47,27 @@
 			.FluxUI-rightLaunchbar{
 				background-color: #D5DED9;
 			}
+			
+			.FluxUI_DialogWrapper{
+				background-color: #000;
+			}
+			
+			.FluxUI_Dialog{
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				background-color: #fff;
+				color: #000;
+			}
+			
+			.FluxUI_DialogTitle{
+				-webkit-border-radius: 10px;
+				-moz-border-radius: 10px;
+				border-radius: 10px;
+				background-color: #7A6A53;
+				color: #fff;
+			}
+
 		</style>
 		
 		<script src="http://requirejs.org/docs/release/2.1.0/minified/require.js" data-main="./node_modules/FluxNode/"></script>
@@ -107,14 +128,14 @@
 														}
 													},
 													
-													/*{
+													{
 														name: 'StartTourButton',
 														text: 'Start Tour',
 														clickEvent: {
 															name: 'StartTourButton.Click',
 															params:{}
 														}
-													}*/
+													}
 												]
 											},
 											left: false,
@@ -132,9 +153,32 @@
 					console.log(myNode);
 					console.log('----');
 					myNode.on('StartTourButton.Click', function(){
-						console.log('Starting FluxUI Tour');
+						new FluxUI.Dialog({
+							size: {
+								width: 600,
+								height: 300
+							},
+							title: 'Welcome to Flux Singularity',
+							dashlets:[
+								{
+									name: 'dshFluxIntro',
+									type: 'html',
+									options: {
+										html: 'Flux Singularity is something that I\'m not yet to be able to define.  I\'ve essentially written it on faith.'
+									}
+								}
+							]
+						}, function(dg){
+							dg.show(function(){
+								setTimeout(function(){
+									dg.hide();
+								}, 10000);
+							});
+						});
 					});
+					
 					myNode.FluxUI_changeWorkspace(); //change to the default workspace
+					
 				});
 			});
 		</script>
