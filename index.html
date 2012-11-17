@@ -7,25 +7,45 @@
 			body, ul, li{
 				margin:0;
 				padding:0;
+				color: #fff;
+				font-family: arial;
 			}
 			
 			.FluxUI-Workspace{
-				background-color: cyan;
+				background-color: #D9CEB2;
 				width: 100%;
 			}
 			
 			.FluxUI-topLaunchbar{
-				background-color: green;	
+				background-color: #7A6A53;	
+			}
+			
+			.FluxUI-topLaunchbar ul{
+				list-style: none;	
+			}
+			
+			
+			.FluxUI-topLaunchbar li{
+				float:left;	
+				padding: 2 2 2 2;
+				border-right: 1px solid #fff;
+			}
+			
+			.FluxUI-topLaunchbar li a{
+				display: block;
+				cursor: pointer;
+				padding: 2 2 2 2;
+					
 			}
 			
 			.FluxUI-bottomLaunchbar{
-				background-color: blue;	
+				background-color: #948C75;	
 			}
 			.FluxUI-leftLaunchbar{
-				background-color: yellow;	
+				background-color: #99B2B7;	
 			}
 			.FluxUI-rightLaunchbar{
-				background-color: red;
+				background-color: #D5DED9;
 			}
 		</style>
 		
@@ -57,8 +77,8 @@
 													}
 												]
 											},
-											left: true,
-											right: true,
+											left: false,
+											right: false,
 											bottom: true
 										}
 									}
