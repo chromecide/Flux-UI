@@ -117,7 +117,7 @@
 														name: 'FluxUIButton',
 														text: 'FluxUI',
 														clickEvent: {
-															name: 'FluxNodeButton.Click',
+															name: 'FluxUIButton.Click',
 															params:{}
 														}
 													},
@@ -150,7 +150,14 @@
 											},
 											left: true,
 											right: true,
-											bottom: true
+											bottom: {
+												launchers: [
+													{
+														name: 'HomeButton4',
+														text: 'Flux Singularity - Copyright &copy; 2012-2013 Justin Pradier'
+													}
+												]
+											}
 										},
 										dashboards:[
 											{
@@ -172,7 +179,43 @@
 														type:'html',
 														name: 'FluxNode-Info',
 														options: {
-															html: '<h1>Flux Node</h1>'
+															html: '<h1>FluxNode</h1>'
+														}
+													}
+												]
+											},
+											{
+												name: 'fluxui_dashboard',
+												dashlets: [
+													{
+														type:'html',
+														name: 'FluxNode-UI',
+														options: {
+															html: '<h1>FluxUI</h1>'
+														}
+													}
+												]
+											},
+											{
+												name: 'downloads_dashboard',
+												dashlets: [
+													{
+														type:'html',
+														name: 'FluxNode-Info',
+														options: {
+															html: '<h1>Flux Singularity Downloads</h1>'
+														}
+													}
+												]
+											},
+											{
+												name: 'documentation_dashboard',
+												dashlets: [
+													{
+														type:'html',
+														name: 'FluxNode-Info',
+														options: {
+															html: '<h1>Flux Singularity Documentation</h1>'
 														}
 													}
 												]
@@ -207,7 +250,32 @@
 						});
 					});
 					
+					myNode.on('FluxUIButton.Click', function(){
+						FluxUI.FluxUI_getWorkspace(function(ws){
+							console.log(ws);
+							ws.showDashboard('fluxui_dashboard', function(){
+								console.log('JGHHGHGGH');
+							});
+						});
+					});
 					
+					myNode.on('DownloadButton.Click', function(){
+						FluxUI.FluxUI_getWorkspace(function(ws){
+							console.log(ws);
+							ws.showDashboard('downloads_dashboard', function(){
+								console.log('JGHHGHGGH');
+							});
+						});
+					});
+					
+					myNode.on('DocumentationButton.Click', function(){
+						FluxUI.FluxUI_getWorkspace(function(ws){
+							console.log(ws);
+							ws.showDashboard('documentation_dashboard', function(){
+								console.log('JGHHGHGGH');
+							});
+						});
+					});
 					
 					myNode.on('StartTourButton.Click', function(){
 						new FluxUI.Dialog({
