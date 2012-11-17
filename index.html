@@ -66,15 +66,55 @@
 											top: {
 												height: 30,
 												launchers: [
-													'Flux Singularity v1.0',
 													{
+														name: 'HomeButton',
+														text: 'Flux Singularity',
+														clickEvent: {
+															name: 'HomeButton.Click',
+															params:{}
+														}
+													},
+													{
+														name: 'FluxNodeButton',
+														text: 'FluxNode',
+														clickEvent: {
+															name: 'FluxNodeButton.Click',
+															params:{}
+														}
+													},
+													{
+														name: 'FluxUIButton',
+														text: 'FluxUI',
+														clickEvent: {
+															name: 'FluxNodeButton.Click',
+															params:{}
+														}
+													},
+													{
+														name: 'DownloadButton',
+														text: 'Downloads',
+														clickEvent: {
+															name: 'DownloadButton.Click',
+															params:{}
+														}
+													},
+													{
+														name: 'DocumentationButton',
+														text: 'Documentation',
+														clickEvent: {
+															name: 'DocumentationButton.Click',
+															params:{}
+														}
+													},
+													
+													/*{
 														name: 'StartTourButton',
 														text: 'Start Tour',
 														clickEvent: {
 															name: 'StartTourButton.Click',
 															params:{}
 														}
-													}
+													}*/
 												]
 											},
 											left: false,
@@ -91,7 +131,10 @@
 					console.log('----');
 					console.log(myNode);
 					console.log('----');
-					myNode.FluxUI_changeWorkspace();
+					myNode.on('StartTourButton.Click', function(){
+						console.log('Starting FluxUI Tour');
+					});
+					myNode.FluxUI_changeWorkspace(); //change to the default workspace
 				});
 			});
 		</script>
