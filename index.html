@@ -213,7 +213,44 @@
 																	options:{
 																		value: 'tester'
 																	}
-																}
+																},
+																{
+																	type:'form/fieldgroup',
+																	name: 'test-fieldgroup',
+																	options:{
+																		label: 'Group Test',
+																		fields:[
+																			{
+																				type: 'form/inputfield',
+																				name: 'test-text',
+																				options:{
+																					type: 'text',
+																					value: 'tester'
+																				}
+																			},
+																			{
+																				type: 'form/selectfield',
+																				name: 'test-select',
+																				options:{
+																					type: 'text',
+																					data:[
+																						{
+																							display: 'item 1',
+																							value: '00001'
+																						}
+																					]
+																				}
+																			},
+																			{
+																				type: 'form/checkfield',
+																				name: 'test-checkbox',
+																				options:{
+																					value: 'tester'
+																				}
+																			}
+																		]
+																	}
+																},
 															]
 														}
 													},
@@ -230,7 +267,7 @@
 														type: 'form/selectfield',
 														name: 'test-select',
 														options:{
-															type: 'text',
+															label: 'select one...',
 															data:[
 																{
 																	display: 'item 1',
@@ -243,7 +280,7 @@
 														type: 'form/checkfield',
 														name: 'test-checkbox',
 														options:{
-															value: 'tester'
+															label: 'yes?'
 														}
 													},
 												]
