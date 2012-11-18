@@ -145,6 +145,27 @@ var FluxUI = {
 			console.log('No Driver Loaded: loadDashlet');
 		}
 	},
+	FluxUI_getDashlet: function(name, callback){
+		var self = this;
+		var driver = FluxUI.FluxUI_Settings.driver.object? FluxUI.FluxUI_Settings.driver.object:{};
+		self.FluxUI_getWorkspace(function(ws){
+			for(var db in ws.dashboards){
+				console.log(db);
+				var dashboard = ws.dashboards[db];
+				if(dashboard instanceof FluxUI.Dashboard){
+					for(var dshIdx=0; dshIdx< dashboard.dashlets.length;dshIdx++){
+						var dashlet = dashboard.dashlets[dshIdx];
+						if(dashlet.name==name){
+							if(callback){
+								callback(dashlet);
+							}
+							return dashlet;
+						}
+					}	
+				}
+			}
+		});
+	},
 	FluxUI_getWorkspaceCount: function(callback){
 		var cnt = 0;
 		for(var wsName in this.workspaces){

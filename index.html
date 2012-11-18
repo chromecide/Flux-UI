@@ -78,6 +78,17 @@
 				margin-top: 0.25em;
 				margin-left: 0.25em;
 			}
+			
+			input, select{
+				clear:both;
+			}
+			
+			form{
+				display: block;
+			}
+			form input, form select{
+				clear:right;
+			}
 		</style>
 		
 		<script src="http://requirejs.org/docs/release/2.1.0/minified/require.js" data-main="./node_modules/FluxNode/"></script>
@@ -169,7 +180,72 @@
 														options: {
 															html: '<h1>Flux Singularity</h1>'
 														}
-													}
+													},
+													{
+														type:'form',
+														name: 'test-form',
+														options:{
+															fields:[
+																{
+																	type: 'form/inputfield',
+																	name: 'test-text',
+																	options:{
+																		type: 'text',
+																		value: 'tester'
+																	}
+																},
+																{
+																	type: 'form/selectfield',
+																	name: 'test-select',
+																	options:{
+																		type: 'text',
+																		data:[
+																			{
+																				display: 'item 1',
+																				value: '00001'
+																			}
+																		]
+																	}
+																},
+																{
+																	type: 'form/checkfield',
+																	name: 'test-checkbox',
+																	options:{
+																		value: 'tester'
+																	}
+																}
+															]
+														}
+													},
+													{
+														type: 'form/inputfield',
+														name: 'test-text',
+														options:{
+															label: 'username',
+															type: 'text',
+															value: 'tester'
+														}
+													},
+													{
+														type: 'form/selectfield',
+														name: 'test-select',
+														options:{
+															type: 'text',
+															data:[
+																{
+																	display: 'item 1',
+																	value: '00001'
+																}
+															]
+														}
+													},
+													{
+														type: 'form/checkfield',
+														name: 'test-checkbox',
+														options:{
+															value: 'tester'
+														}
+													},
 												]
 											},
 											{
@@ -189,7 +265,7 @@
 												dashlets: [
 													{
 														type:'html',
-														name: 'FluxNode-UI',
+														name: 'FluxUI-UI',
 														options: {
 															html: '<h1>FluxUI</h1>'
 														}
@@ -201,7 +277,7 @@
 												dashlets: [
 													{
 														type:'html',
-														name: 'FluxNode-Info',
+														name: 'Download-Info',
 														options: {
 															html: '<h1>Flux Singularity Downloads</h1>'
 														}
@@ -213,7 +289,7 @@
 												dashlets: [
 													{
 														type:'html',
-														name: 'FluxNode-Info',
+														name: 'Documentation-Info',
 														options: {
 															html: '<h1>Flux Singularity Documentation</h1>'
 														}
@@ -243,9 +319,16 @@
 					
 					myNode.on('FluxNodeButton.Click', function(){
 						FluxUI.FluxUI_getWorkspace(function(ws){
-							console.log(ws);
 							ws.showDashboard('fluxnode_dashboard', function(){
-								console.log('JGHHGHGGH');
+								setTimeout(function(){
+									FluxUI.FluxUI_getDashlet('FluxNode-Info', function(dashlet){
+										console.log(dashlet);
+										dashlet.getValue(function(val){
+											console.log('current value: '+val);
+											dashlet.setValue(val+'<h2>NEW CONTENT</h2>');
+										})
+									});
+								}, 5000);
 							});
 						});
 					});
