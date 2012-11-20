@@ -89,6 +89,25 @@
 			form input, form select{
 				clear:right;
 			}
+			
+			.fieldwrapper {
+				height: 1.5em;
+				display: block;
+				margin-bottom: 5px;
+			}
+			
+			.FluxUI_Container{
+				border:1px solid red;
+				width: 200px;
+				height: 400px;
+			}
+			
+			label {
+				clear: left;
+			    display: block;
+			    float: left;
+			    width: 150px;
+			}
 		</style>
 		
 		<script src="http://requirejs.org/docs/release/2.1.0/minified/require.js" data-main="./node_modules/FluxNode/"></script>
@@ -156,6 +175,17 @@
 															name: 'StartTourButton.Click',
 															params:{}
 														}
+													},
+													
+													{
+														name: 'EditWorkspaceButton',
+														text: 'Edit Workspace',
+														clickEvent: {
+															name: 'FluxUI.Workspace.StartEdit',
+															params:{
+																
+															}
+														}
 													}
 												]
 											},
@@ -205,6 +235,13 @@
 																				value: '00001'
 																			}
 																		]
+																	}
+																},
+																{
+																	type: 'button',
+																	name: 'test-button',
+																	options:{
+																		display: 'BUTTON 1'
 																	}
 																},
 																{
@@ -289,10 +326,10 @@
 												name: 'fluxnode_dashboard',
 												dashlets: [
 													{
-														type:'html',
+														type:'layout/split',
 														name: 'FluxNode-Info',
 														options: {
-															html: '<h1>FluxNode</h1>'
+															//html: '<h1>FluxNode</h1>'
 														}
 													}
 												]
@@ -337,7 +374,10 @@
 									}
 								]
 							}
-						}	
+						},
+						{
+							name: 'workspace_editor/main'
+						}
 					]
 				}, function(nd){
 					myNode = nd;
@@ -347,7 +387,7 @@
 					
 					myNode.on('HomeButton.Click', function(){
 						FluxUI.FluxUI_getWorkspace(function(ws){
-							console.log(ws);
+							
 							ws.showDashboard('fluxs_dashboard', function(){
 								console.log('JGHHGHGGH');
 							});
@@ -357,22 +397,14 @@
 					myNode.on('FluxNodeButton.Click', function(){
 						FluxUI.FluxUI_getWorkspace(function(ws){
 							ws.showDashboard('fluxnode_dashboard', function(){
-								setTimeout(function(){
-									FluxUI.FluxUI_getDashlet('FluxNode-Info', function(dashlet){
-										console.log(dashlet);
-										dashlet.getValue(function(val){
-											console.log('current value: '+val);
-											dashlet.setValue(val+'<h2>NEW CONTENT</h2>');
-										})
-									});
-								}, 5000);
+								
 							});
 						});
 					});
 					
 					myNode.on('FluxUIButton.Click', function(){
 						FluxUI.FluxUI_getWorkspace(function(ws){
-							console.log(ws);
+							
 							ws.showDashboard('fluxui_dashboard', function(){
 								console.log('JGHHGHGGH');
 							});
@@ -381,7 +413,7 @@
 					
 					myNode.on('DownloadButton.Click', function(){
 						FluxUI.FluxUI_getWorkspace(function(ws){
-							console.log(ws);
+							
 							ws.showDashboard('downloads_dashboard', function(){
 								console.log('JGHHGHGGH');
 							});
@@ -390,7 +422,7 @@
 					
 					myNode.on('DocumentationButton.Click', function(){
 						FluxUI.FluxUI_getWorkspace(function(ws){
-							console.log(ws);
+
 							ws.showDashboard('documentation_dashboard', function(){
 								console.log('JGHHGHGGH');
 							});
