@@ -16,13 +16,16 @@ var FluxUI = {
 			cfg = {};	
 		}
 		
+		if(cfg && cfg.path){
+			thisNode.FluxUI_Settings.path = cfg.path;
+		}
 		require([
-				thisNode.FluxUI_Settings.path+'workspace', 
-				thisNode.FluxUI_Settings.path+'launchbar', 
-				thisNode.FluxUI_Settings.path+'launcher',
-				thisNode.FluxUI_Settings.path+'dashlet',
-				thisNode.FluxUI_Settings.path+'dialog',
-				thisNode.FluxUI_Settings.path+'dashboard'
+				thisNode.FluxUI_Settings.path+'workspace.js', 
+				thisNode.FluxUI_Settings.path+'launchbar.js', 
+				thisNode.FluxUI_Settings.path+'launcher.js',
+				thisNode.FluxUI_Settings.path+'dashlet.js',
+				thisNode.FluxUI_Settings.path+'dialog.js',
+				thisNode.FluxUI_Settings.path+'dashboard.js'
 				], 
 		function(WorkSpace_ctr, Launchbar_ctr, Launcher_ctr, Dashlet_ctr, Dialog_ctr, Dashboard_ctr){
 			FluxUI.Workspace = WorkSpace_ctr;
@@ -79,7 +82,7 @@ var FluxUI = {
 		thisNode.FluxUI_Settings.driver.initCfg = driverCfg;
 		
 		console.log('Loading '+driverName+' FluxUI Driver');
-		require(['./lib/drivers/'+thisNode.FluxUI_Settings.driver.name+'/driver.js'], function(driverObj){
+		require([thisNode.FluxUI_Settings.path+'drivers/'+thisNode.FluxUI_Settings.driver.name+'/driver.js'], function(driverObj){
 			if(driverObj){
 				thisNode.FluxUI_Settings.driver.object = driverObj;
 				if(driverObj.init){
@@ -150,11 +153,13 @@ var FluxUI = {
 		var driver = FluxUI.FluxUI_Settings.driver.object? FluxUI.FluxUI_Settings.driver.object:{};
 		self.FluxUI_getWorkspace(function(ws){
 			for(var db in ws.dashboards){
-				console.log(db);
+				
 				var dashboard = ws.dashboards[db];
+				
 				if(dashboard instanceof FluxUI.Dashboard){
 					for(var dshIdx=0; dshIdx< dashboard.dashlets.length;dshIdx++){
 						var dashlet = dashboard.dashlets[dshIdx];
+						
 						if(dashlet.name==name){
 							if(callback){
 								callback(dashlet);
